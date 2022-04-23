@@ -10,19 +10,23 @@ import UIKit
 class HomeViewController: UIViewController {
     var homeFeedTableView :UITableView = {
         var _tableView = UITableView(frame: .zero, style: .grouped)
+        _tableView.backgroundColor = .systemBackground
         _tableView.register(CollectionTableViewCell.self, forCellReuseIdentifier: CollectionTableViewCell.indentifier)
 
         return _tableView
     }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         view.addSubview(homeFeedTableView)
         homeFeedTableView.dataSource = self
         homeFeedTableView.delegate = self
-        homeFeedTableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 400))
+        let headerView = HeroHeaderUIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 400))
+        homeFeedTableView.tableHeaderView = headerView
         
     }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         homeFeedTableView.frame = view.bounds
@@ -42,7 +46,6 @@ extension HomeViewController:UITableViewDelegate,UITableViewDataSource{
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CollectionTableViewCell.indentifier, for: indexPath) as? CollectionTableViewCell else {
             return UITableViewCell()
         }
-        
         return cell
     }
     

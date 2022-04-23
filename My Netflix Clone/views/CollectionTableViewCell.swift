@@ -21,7 +21,6 @@ class CollectionTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.backgroundColor = .blue
         contentView.addSubview(collectionView)
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -43,7 +42,7 @@ extension CollectionTableViewCell : UICollectionViewDelegate,UICollectionViewDat
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        cell.backgroundColor = .green
+        cell.backgroundColor = .red
         return cell
     }
 }
