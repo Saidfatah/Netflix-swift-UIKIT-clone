@@ -20,6 +20,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        
         view.addSubview(homeFeedTableView)
         homeFeedTableView.dataSource = self
         homeFeedTableView.delegate = self
@@ -29,6 +30,7 @@ class HomeViewController: UIViewController {
         let headerView = HeroHeaderUIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 400))
         homeFeedTableView.tableHeaderView = headerView
         
+        getTrendingMovies()
     }
     
     private func configureNvbar(){
@@ -57,6 +59,18 @@ class HomeViewController: UIViewController {
         homeFeedTableView.frame = view.bounds
     }
 
+    private func getTrendingMovies(){
+        ApiCaller.shared.getTrendingMovies { results in
+            switch results{
+            case .success(let movies):
+                print(movies[0].title)
+            case .failure(let error):
+                print(error )
+                
+            }
+        
+        }
+    }
 }
 
 extension HomeViewController:UITableViewDelegate,UITableViewDataSource{
