@@ -22,11 +22,35 @@ class HomeViewController: UIViewController {
         view.addSubview(homeFeedTableView)
         homeFeedTableView.dataSource = self
         homeFeedTableView.delegate = self
+        
+        configureNvbar()
+        
         let headerView = HeroHeaderUIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 400))
         homeFeedTableView.tableHeaderView = headerView
         
     }
     
+    private func configureNvbar(){
+        
+       // left bar button [logo]
+       let netflixLogoUIViewContainer = UIView(frame: CGRect.init(x: 0, y: 0, width: 25, height: 30))
+        
+       let netflixLogo = UIImageView(frame: CGRect.init(x: 0, y: 0, width: 25, height: 30))
+       netflixLogo.image = UIImage(named: "Netflix_Logo")
+        
+       netflixLogoUIViewContainer.addSubview(netflixLogo)
+        
+       let searchBarButtonItem = UIBarButtonItem(customView: netflixLogoUIViewContainer)
+       searchBarButtonItem.width = 20
+       navigationItem.leftBarButtonItem = searchBarButtonItem
+        
+       // right bar buttons
+        navigationItem.rightBarButtonItems = [
+            UIBarButtonItem(image: UIImage(systemName: "person"), style: .done, target: self, action: nil),
+            UIBarButtonItem(image: UIImage(systemName: "play.rectangle"), style: .done, target: self, action: nil),
+        ]
+        navigationController?.navigationBar.tintColor = .red
+    }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         homeFeedTableView.frame = view.bounds
@@ -54,6 +78,13 @@ extension HomeViewController:UITableViewDelegate,UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         40
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let defaultOffset = view.safeAreaInsets.top
+        let offset = scrollView.contentOffset.y + defaultOffset
+        
+        navigationController?.navigationBar.transform = .init(translationX: 0, y:min(0, -offset))
     }
     
 }

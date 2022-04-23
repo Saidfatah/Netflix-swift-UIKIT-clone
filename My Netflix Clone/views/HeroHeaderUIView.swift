@@ -76,15 +76,15 @@ class HeroHeaderUIView: UIView {
         buttonsView.addSubview(downloadButton)
         
         let playButtonConstraints:[NSLayoutConstraint] = [
-            playButton.leadingAnchor.constraint(equalTo: buttonsView.leadingAnchor ,constant: 20),
+            playButton.leadingAnchor.constraint(equalTo: buttonsView.leadingAnchor ,constant: 60),
             playButton.bottomAnchor.constraint(equalTo: buttonsView.bottomAnchor),
-            playButton.widthAnchor.constraint(equalTo: buttonsView.widthAnchor, multiplier: 0.4),
+            playButton.widthAnchor.constraint(equalTo: buttonsView.widthAnchor, multiplier: 0.3),
         ]
          
         let downloadButtonConstraints:[NSLayoutConstraint] = [
-            downloadButton.trailingAnchor.constraint(equalTo: buttonsView.trailingAnchor , constant: -20 ),
+            downloadButton.trailingAnchor.constraint(equalTo: buttonsView.trailingAnchor , constant: -60 ),
             downloadButton.bottomAnchor.constraint(equalTo: buttonsView.bottomAnchor),
-            downloadButton.widthAnchor.constraint(equalTo: buttonsView.widthAnchor, multiplier: 0.4),
+            downloadButton.widthAnchor.constraint(equalTo: buttonsView.widthAnchor, multiplier: 0.3),
         ]
 
         
