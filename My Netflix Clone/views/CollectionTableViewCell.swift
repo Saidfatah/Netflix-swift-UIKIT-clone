@@ -9,13 +9,13 @@ import UIKit
 
 class CollectionTableViewCell: UITableViewCell {
     static let indentifier = "collection-view-table-cell"
-    
+    private var titles :[Title] = [Title]()
     private let collectionView:UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.itemSize = CGSize(width: 140, height: 200)
         let collectionView = UICollectionView(frame: .zero , collectionViewLayout: layout)
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        collectionView.register(ThumbnailCollectionViewCell.self, forCellWithReuseIdentifier: ThumbnailCollectionViewCell.indentifier)
         return collectionView
     }()
     
@@ -34,15 +34,26 @@ class CollectionTableViewCell: UITableViewCell {
         super.layoutSubviews()
         collectionView.frame = contentView.bounds
     }
+    public func configure(with titles: [Title] ){
+        self.titles = titles
+        DispatchQueue.main.async {[weak self] in
+            // reload the collection vies to reflect the newly fetched titles
+            self?.collectionView.reloadData()
+        }
+    }
 }
 
 extension CollectionTableViewCell : UICollectionViewDelegate,UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        5
+        titles.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        cell.backgroundColor = .red
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier:ThumbnailCollectionViewCell.indentifier, for: indexPath) as? ThumbnailCollectionViewCell else {return UICollectionViewCell() }
+        
+        
+        guard let poster_path = titles[indexPath.row].poster_path else {return  UICollectionViewCell()}
+        
+        cell.configureThumbnail(with: poster_path )
         return cell
     }
 }
