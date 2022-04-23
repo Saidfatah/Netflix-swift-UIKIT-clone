@@ -30,7 +30,7 @@ class HomeViewController: UIViewController {
         let headerView = HeroHeaderUIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 400))
         homeFeedTableView.tableHeaderView = headerView
         
-        getTrendingMovies()
+        fetchData()
     }
     
     private func configureNvbar(){
@@ -59,16 +59,52 @@ class HomeViewController: UIViewController {
         homeFeedTableView.frame = view.bounds
     }
 
-    private func getTrendingMovies(){
+    private func fetchData(){
         ApiCaller.shared.getTrendingMovies { results in
             switch results{
             case .success(let movies):
                 print(movies[0].title)
             case .failure(let error):
                 print(error )
-                
+
             }
-        
+        }
+        ApiCaller.shared.getUpcomingMovies{ results in
+            switch results{
+            case .success(let movies):
+                print(movies[0].title)
+            case .failure(let error):
+                print(error )
+
+            }
+        }
+        ApiCaller.shared.getPopularMovies{ results in
+            switch results{
+            case .success(let movies):
+                print(movies[0].title)
+            case .failure(let error):
+                print(error )
+
+            }
+        }
+        ApiCaller.shared.getTopRatedMovies{ results in
+            switch results{
+            case .success(let movies):
+                print(movies[0].title)
+            case .failure(let error):
+                print(error )
+
+            }
+        }
+        ApiCaller.shared.getTrendingTv { results in
+            switch results{
+            case .success(let tvs):
+                print("tv trending show")
+                print(tvs[0].name)
+            case .failure(let error):
+                print(error )
+
+            }
         }
     }
 }
