@@ -17,6 +17,7 @@
 		2049FDE62814A4C1004A8936 /* Title.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2049FDE52814A4C1004A8936 /* Title.swift */; };
 		2049FDE82814DD24004A8936 /* TitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2049FDE72814DD24004A8936 /* TitleTableViewCell.swift */; };
 		2049FDEA2814DFFB004A8936 /* TitleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2049FDE92814DFFB004A8936 /* TitleViewModel.swift */; };
+		2049FDEC28159FDE004A8936 /* SnappingCollectionViewLayout .swift in Sources */ = {isa = PBXBuildFile; fileRef = 2049FDEB28159FDE004A8936 /* SnappingCollectionViewLayout .swift */; };
 		20B150EA2811F4F3006236E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B150E92811F4F3006236E9 /* AppDelegate.swift */; };
 		20B150EC2811F4F3006236E9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B150EB2811F4F3006236E9 /* SceneDelegate.swift */; };
 		20B150EE2811F4F3006236E9 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B150ED2811F4F3006236E9 /* MainTabBarViewController.swift */; };
@@ -37,6 +38,7 @@
 		2049FDE52814A4C1004A8936 /* Title.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Title.swift; sourceTree = "<group>"; };
 		2049FDE72814DD24004A8936 /* TitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTableViewCell.swift; sourceTree = "<group>"; };
 		2049FDE92814DFFB004A8936 /* TitleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleViewModel.swift; sourceTree = "<group>"; };
+		2049FDEB28159FDE004A8936 /* SnappingCollectionViewLayout .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SnappingCollectionViewLayout .swift"; sourceTree = "<group>"; };
 		20B150E62811F4F3006236E9 /* My Netflix Clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My Netflix Clone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		20B150E92811F4F3006236E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20B150EB2811F4F3006236E9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 				2049FDD4281352EA004A8936 /* HeroHeaderUIView.swift */,
 				2049FDDE2814A042004A8936 /* ThumbnailCollectionViewCell.swift */,
 				2049FDE72814DD24004A8936 /* TitleTableViewCell.swift */,
+				2049FDEB28159FDE004A8936 /* SnappingCollectionViewLayout .swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 				20B151012811FCEB006236E9 /* UpcomingViewController.swift in Sources */,
 				2049FDDB28146C07004A8936 /* Extensions.swift in Sources */,
 				20B150FF2811FCCE006236E9 /* HomeViewController.swift in Sources */,
+				2049FDEC28159FDE004A8936 /* SnappingCollectionViewLayout .swift in Sources */,
 				2049FDE62814A4C1004A8936 /* Title.swift in Sources */,
 				2049FDD3281349A3004A8936 /* CollectionTableViewCell.swift in Sources */,
 				2049FDD728145884004A8936 /* ApiCaller.swift in Sources */,

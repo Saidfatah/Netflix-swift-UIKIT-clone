@@ -11,7 +11,7 @@ class CollectionTableViewCell: UITableViewCell {
     static let indentifier = "collection-view-table-cell"
     private var titles :[Title] = [Title]()
     private let collectionView:UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
+        let layout = SnappingCollectionViewLayout_()
         layout.scrollDirection = .horizontal
         layout.itemSize = CGSize(width: 140, height: 200)
         let collectionView = UICollectionView(frame: .zero , collectionViewLayout: layout)
