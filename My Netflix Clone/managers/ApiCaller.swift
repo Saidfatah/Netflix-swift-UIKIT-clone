@@ -116,12 +116,11 @@ class ApiCaller {
     }
     
     func getSearchedMovies(searchFor query:String ,completion : @escaping (Result<[Title],Error>) -> Void){
-        print("query : \(query)")
-        guard let url =  URL(string: "\(Constants.BASE_URL)/\(Constants.API_VERSION )/search/movie?api_key=\(Constants.API_KEY)&language=en-US&query=\(query)&page=1&include_adult=false") else {return}
+        let urlString = "\(Constants.BASE_URL)/\(Constants.API_VERSION )/search/movie?api_key=\(Constants.API_KEY)&language=en-US&query=\(query)&page=1&include_adult=false"
+        guard let url =  URL(string:urlString) else {return}
         
         let task = URLSession.shared.dataTask(with: URLRequest(url : url)) { data, _, error in
             guard let data = data , error == nil else {
-                print("no data")
                 return
             }
 

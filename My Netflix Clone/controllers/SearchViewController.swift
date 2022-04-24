@@ -80,10 +80,10 @@ class SearchViewController: UIViewController {
 extension SearchViewController :UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         searchMoviesUITextField.resignFirstResponder()
-        let query = searchMoviesUITextField.text
+        let query = searchMoviesUITextField.text?.trimingLeadingSpaces().trimingTrailingSpaces()
         // only perform search if text is not empty string
         if(query != ""){
-            // start animations
+            // start spinner animations
             let spinner: UIActivityIndicatorView = UIActivityIndicatorView(style: .large)
             spinner.startAnimating()
             spinner.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: searchFeedTableView.bounds.width, height: CGFloat(120))
@@ -97,10 +97,9 @@ extension SearchViewController :UITextFieldDelegate{
                 case .success(let moviesSearchResults):
                     if(moviesSearchResults.count > 0){
                         self?.titlesSearchResults = moviesSearchResults
-                        print("got results \(moviesSearchResults.count)")
                         DispatchQueue.main.async {
-                            self?.searchFeedTableView.reloadData()
                             self?.searchFeedTableView.tableFooterView?.isHidden = true
+                            self?.searchFeedTableView.reloadData()
                         }
 
                     }else {
@@ -129,8 +128,12 @@ extension SearchViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TitleTableViewCell.identifier, for: indexPath) as? TitleTableViewCell else { return UITableViewCell()}
         let title = titlesSearchResults[indexPath.row]
-        let name = title.original_name ?? title.title ?? "nah"
+
+        let name = title.original_name ?? title.title   ?? "default value"
         guard let poster_path = title.poster_path else { return UITableViewCell() }
+            
+
+        
         let titleviewModel = TitleViewModel(titleName: name, posterUrl: poster_path)
         cell.configureTitleCell(with: titleviewModel)
         return cell
