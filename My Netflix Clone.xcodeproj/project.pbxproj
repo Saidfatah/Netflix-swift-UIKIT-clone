@@ -30,6 +30,7 @@
 		20B151012811FCEB006236E9 /* UpcomingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B151002811FCEB006236E9 /* UpcomingViewController.swift */; };
 		20B151032811FD14006236E9 /* DownloadsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B151022811FD14006236E9 /* DownloadsViewController.swift */; };
 		20B151052811FD4C006236E9 /* NormalSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B151042811FD4C006236E9 /* NormalSearchViewController.swift */; };
+		20E0AD5F281DAB7A0036500D /* YoutubeSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E0AD5E281DAB7A0036500D /* YoutubeSearchResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		20B151002811FCEB006236E9 /* UpcomingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingViewController.swift; sourceTree = "<group>"; };
 		20B151022811FD14006236E9 /* DownloadsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsViewController.swift; sourceTree = "<group>"; };
 		20B151042811FD4C006236E9 /* NormalSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalSearchViewController.swift; sourceTree = "<group>"; };
+		20E0AD5E281DAB7A0036500D /* YoutubeSearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeSearchResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				2049FDE52814A4C1004A8936 /* Title.swift */,
+				20E0AD5E281DAB7A0036500D /* YoutubeSearchResponse.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 				2049FDF02815E130004A8936 /* SearchResultsViewController.swift in Sources */,
 				2049FDEC28159FDE004A8936 /* SnappingCollectionViewLayout .swift in Sources */,
 				2049FDE62814A4C1004A8936 /* Title.swift in Sources */,
+				20E0AD5F281DAB7A0036500D /* YoutubeSearchResponse.swift in Sources */,
 				2049FDD3281349A3004A8936 /* CollectionTableViewCell.swift in Sources */,
 				2049FDD728145884004A8936 /* ApiCaller.swift in Sources */,
 				2049FDEA2814DFFB004A8936 /* TitleViewModel.swift in Sources */,

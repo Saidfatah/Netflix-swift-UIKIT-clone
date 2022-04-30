@@ -56,4 +56,21 @@ extension CollectionTableViewCell : UICollectionViewDelegate,UICollectionViewDat
         cell.configureThumbnail(with: poster_path )
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        guard let title_name = titles[indexPath.row].title ?? titles[indexPath.row].original_name  else {return  }
+        
+        ApiCaller.shared.getYoutubeTrailer(searchFor: title_name + "trailer") { results in
+            DispatchQueue.main.async {
+                switch results {
+                case .success(let res):
+                    print(res)
+                case .failure(let err):
+                    print(err.localizedDescription)
+                }
+            }
+        }
+    }
+    
 }
