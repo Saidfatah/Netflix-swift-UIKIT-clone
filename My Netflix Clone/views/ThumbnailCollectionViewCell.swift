@@ -9,7 +9,7 @@ import UIKit
 import SDWebImage
 
 class ThumbnailCollectionViewCell: UICollectionViewCell {
-    static let indentifier = "ThumbnailCollectionViewCell"
+    static let identifier = "ThumbnailCollectionViewCell"
     
     private let thumbnailImageView : UIImageView = {
         let imageView = UIImageView()

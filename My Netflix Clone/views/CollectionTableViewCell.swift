@@ -8,14 +8,14 @@
 import UIKit
 
 class CollectionTableViewCell: UITableViewCell {
-    static let indentifier = "collection-view-table-cell"
+    static let identifier = "collection-view-table-cell"
     private var titles :[Title] = [Title]()
     private let collectionView:UICollectionView = {
         let layout = SnappingCollectionViewLayout_()
         layout.scrollDirection = .horizontal
         layout.itemSize = CGSize(width: 140, height: 200)
         let collectionView = UICollectionView(frame: .zero , collectionViewLayout: layout)
-        collectionView.register(ThumbnailCollectionViewCell.self, forCellWithReuseIdentifier: ThumbnailCollectionViewCell.indentifier)
+        collectionView.register(ThumbnailCollectionViewCell.self, forCellWithReuseIdentifier: ThumbnailCollectionViewCell.identifier)
         return collectionView
     }()
     
@@ -48,7 +48,7 @@ extension CollectionTableViewCell : UICollectionViewDelegate,UICollectionViewDat
         titles.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier:ThumbnailCollectionViewCell.indentifier, for: indexPath) as? ThumbnailCollectionViewCell else {return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier:ThumbnailCollectionViewCell.identifier, for: indexPath) as? ThumbnailCollectionViewCell else {return UICollectionViewCell() }
         
         
         guard let poster_path = titles[indexPath.row].poster_path else {return  UICollectionViewCell()}

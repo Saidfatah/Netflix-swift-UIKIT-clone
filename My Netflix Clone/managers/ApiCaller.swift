@@ -116,6 +116,7 @@ class ApiCaller {
     }
     
     func getSearchedMovies(searchFor query:String ,completion : @escaping (Result<[Title],Error>) -> Void){
+        guard let query = query.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {return}
         let urlString = "\(Constants.BASE_URL)/\(Constants.API_VERSION )/search/movie?api_key=\(Constants.API_KEY)&language=en-US&query=\(query)&page=1&include_adult=false"
         guard let url =  URL(string:urlString) else {return}
         

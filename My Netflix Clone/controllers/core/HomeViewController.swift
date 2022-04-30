@@ -20,7 +20,7 @@ class HomeViewController: UIViewController {
     var homeFeedTableView :UITableView = {
         var _tableView = UITableView(frame: .zero, style: .grouped)
         _tableView.backgroundColor = .systemBackground
-        _tableView.register(CollectionTableViewCell.self, forCellReuseIdentifier: CollectionTableViewCell.indentifier)
+        _tableView.register(CollectionTableViewCell.self, forCellReuseIdentifier: CollectionTableViewCell.identifier)
 
         return _tableView
     }()
@@ -77,7 +77,7 @@ extension HomeViewController:UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: CollectionTableViewCell.indentifier, for: indexPath) as? CollectionTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CollectionTableViewCell.identifier, for: indexPath) as? CollectionTableViewCell else {
             return UITableViewCell()
         }
         

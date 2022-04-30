@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SearchViewController: UIViewController {
+class NormalSearchViewController: UIViewController {
 
     var titlesSearchResults:[Title] = [Title]()
     var searchFeedTableView :UITableView = {
@@ -77,7 +77,7 @@ class SearchViewController: UIViewController {
 
 }
 
-extension SearchViewController :UITextFieldDelegate{
+extension NormalSearchViewController :UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         searchMoviesUITextField.resignFirstResponder()
         let query = searchMoviesUITextField.text?.trimingLeadingSpaces().trimingTrailingSpaces()
@@ -93,26 +93,25 @@ extension SearchViewController :UITextFieldDelegate{
             
             
             ApiCaller.shared.getSearchedMovies(searchFor: query ?? "movie title") {[weak self] results in
-                switch results{
-                case .success(let moviesSearchResults):
-                    if(moviesSearchResults.count > 0){
-                        self?.titlesSearchResults = moviesSearchResults
-                        DispatchQueue.main.async {
+                DispatchQueue.main.async {
+                    switch results{
+                     case .success(let moviesSearchResults):
+                        if(moviesSearchResults.count > 0){
+                            self?.titlesSearchResults = moviesSearchResults
                             self?.searchFeedTableView.tableFooterView?.isHidden = true
                             self?.searchFeedTableView.reloadData()
+                        }else {
+                            let noResultsLabel = UILabel()
+                            noResultsLabel.text = "Opps No Results !"
+                            noResultsLabel.font = .boldSystemFont(ofSize: 24)
+                            spinner.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: self?.searchFeedTableView.bounds.width ?? 200, height: CGFloat(120))
+                            self?.searchFeedTableView.tableFooterView = noResultsLabel
                         }
-
-                    }else {
-                        let noResultsLabel = UILabel()
-                        noResultsLabel.text = "Opps No Results !"
-                        noResultsLabel.font = .boldSystemFont(ofSize: 24)
-                        spinner.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: self?.searchFeedTableView.bounds.width ?? 200, height: CGFloat(120))
-                        self?.searchFeedTableView.tableFooterView = noResultsLabel
+                     case .failure(let error):print(error )
                     }
-                                    case .failure(let error):
-                    print(error )
-
+                    
                 }
+               
             }
         }
       
@@ -120,7 +119,7 @@ extension SearchViewController :UITextFieldDelegate{
     }
 }
 
-extension SearchViewController:UITableViewDelegate,UITableViewDataSource{
+extension NormalSearchViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return titlesSearchResults.count
     }

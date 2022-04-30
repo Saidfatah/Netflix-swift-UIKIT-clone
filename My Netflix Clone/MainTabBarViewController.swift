@@ -14,6 +14,8 @@ class MainTabBarViewController: UITabBarController {
         // Do any additional setup after loading the view.
         view.backgroundColor = .systemBlue
         let vc1 = UINavigationController(rootViewController: HomeViewController())
+        // let vc2 = UINavigationController(rootViewController:  NormalSearchViewController())
+        // inspiered by Amr's tutorial
         let vc2 = UINavigationController(rootViewController: SearchViewController())
         let vc3 = UINavigationController(rootViewController: UpcomingViewController())
         let vc4 = UINavigationController(rootViewController: DownloadsViewController())
