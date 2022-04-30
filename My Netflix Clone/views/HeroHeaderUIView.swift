@@ -8,23 +8,15 @@
 import UIKit
 
 class HeroHeaderUIView: UIView {
-    private let playButton :UIButton = {
-        var button = UIButton()
+    private let playButton :PrimaryUIButton = {
+        var button = PrimaryUIButton()
         button.setTitle("Play", for:.normal)
-        button.layer.borderColor = UIColor.systemBackground.cgColor
-        button.layer.borderWidth = 1
-        button.layer.cornerRadius = 5
-        button.translatesAutoresizingMaskIntoConstraints = false
         return button
         
     }()
-    private let downloadButton :UIButton = {
-        var button = UIButton()
+    private let downloadButton :PrimaryUIButton = {
+        var button = PrimaryUIButton()
         button.setTitle("Download", for:.normal)
-        button.layer.borderColor = UIColor.systemBackground.cgColor
-        button.layer.borderWidth = 1
-        button.layer.cornerRadius = 5
-        button.translatesAutoresizingMaskIntoConstraints = false
         return button
         
     }()

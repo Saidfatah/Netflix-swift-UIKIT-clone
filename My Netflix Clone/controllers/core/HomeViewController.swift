@@ -37,7 +37,6 @@ class HomeViewController: UIViewController {
         
         let headerView = HeroHeaderUIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 400))
         homeFeedTableView.tableHeaderView = headerView
-        
     }
     
     private func configureNvbar(){
@@ -81,6 +80,8 @@ extension HomeViewController:UITableViewDelegate,UITableViewDataSource{
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CollectionTableViewCell.identifier, for: indexPath) as? CollectionTableViewCell else {
             return UITableViewCell()
         }
+        
+        cell.delegate = self
         
         switch indexPath.section {
         case sections.Popular.rawValue :
@@ -169,4 +170,17 @@ extension HomeViewController:UITableViewDelegate,UITableViewDataSource{
     }
     
    
+}
+
+extension HomeViewController :CollectionTableViewCellDelegate{
+    func collectionTableViewCellDelegateDidTapCell(_ cell: CollectionTableViewCell, viewModel: TitlePreviewViewModel) {
+        DispatchQueue.main.async { [weak self] in
+            let vc = TitlePreviewViewController()
+            vc.configure(with: viewModel)
+            self?.navigationController?.pushViewController(vc, animated: true)
+        }
+        
+    }
+    
+    
 }

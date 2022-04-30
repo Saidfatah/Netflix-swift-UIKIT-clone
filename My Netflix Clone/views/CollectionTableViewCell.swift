@@ -5,9 +5,16 @@
 //  Created by said fatah on 22/4/2022.
 //
 
+
 import UIKit
 
+protocol CollectionTableViewCellDelegate:AnyObject {
+    func collectionTableViewCellDelegateDidTapCell(_ cell:CollectionTableViewCell , viewModel : TitlePreviewViewModel)
+}
+
 class CollectionTableViewCell: UITableViewCell {
+    
+    weak var delegate:CollectionTableViewCellDelegate?
     static let identifier = "collection-view-table-cell"
     private var titles :[Title] = [Title]()
     private let collectionView:UICollectionView = {
@@ -59,13 +66,16 @@ extension CollectionTableViewCell : UICollectionViewDelegate,UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        guard let title_name = titles[indexPath.row].title ?? titles[indexPath.row].original_name  else {return  }
+        guard let title_name =  titles[indexPath.row].title ??  titles[indexPath.row].original_name  else {return  }
         
-        ApiCaller.shared.getYoutubeTrailer(searchFor: title_name + "trailer") { results in
+        ApiCaller.shared.getYoutubeTrailer(searchFor: title_name + "trailer") {[weak self] results in
             DispatchQueue.main.async {
                 switch results {
-                case .success(let res):
-                    print(res)
+                case .success(let youtubeVideo):
+                    let title = self?.titles[indexPath.row]
+                    guard let strongSelf = self  else {return}
+                    let viewModel = TitlePreviewViewModel(title: title_name, youtubeVideo: youtubeVideo , overview: title?.overview ?? "overview ")
+                    self?.delegate?.collectionTableViewCellDelegateDidTapCell(strongSelf, viewModel: viewModel)
                 case .failure(let err):
                     print(err.localizedDescription)
                 }

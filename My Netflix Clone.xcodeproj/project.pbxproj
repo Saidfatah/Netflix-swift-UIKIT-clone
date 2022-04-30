@@ -31,6 +31,9 @@
 		20B151032811FD14006236E9 /* DownloadsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B151022811FD14006236E9 /* DownloadsViewController.swift */; };
 		20B151052811FD4C006236E9 /* NormalSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B151042811FD4C006236E9 /* NormalSearchViewController.swift */; };
 		20E0AD5F281DAB7A0036500D /* YoutubeSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E0AD5E281DAB7A0036500D /* YoutubeSearchResponse.swift */; };
+		20E0AD61281DAF8D0036500D /* TitlePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E0AD60281DAF8D0036500D /* TitlePreviewViewController.swift */; };
+		20E0AD63281DBF0E0036500D /* TtitlePreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E0AD62281DBF0E0036500D /* TtitlePreviewViewModel.swift */; };
+		20E0AD65281DC90C0036500D /* PrimaryUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E0AD64281DC90C0036500D /* PrimaryUIButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +61,9 @@
 		20B151022811FD14006236E9 /* DownloadsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsViewController.swift; sourceTree = "<group>"; };
 		20B151042811FD4C006236E9 /* NormalSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalSearchViewController.swift; sourceTree = "<group>"; };
 		20E0AD5E281DAB7A0036500D /* YoutubeSearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeSearchResponse.swift; sourceTree = "<group>"; };
+		20E0AD60281DAF8D0036500D /* TitlePreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitlePreviewViewController.swift; sourceTree = "<group>"; };
+		20E0AD62281DBF0E0036500D /* TtitlePreviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TtitlePreviewViewModel.swift; sourceTree = "<group>"; };
+		20E0AD64281DC90C0036500D /* PrimaryUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryUIButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				2049FDE92814DFFB004A8936 /* TitleViewModel.swift */,
+				20E0AD62281DBF0E0036500D /* TtitlePreviewViewModel.swift */,
 			);
 			path = "view models";
 			sourceTree = "<group>";
@@ -127,6 +134,7 @@
 				20B151022811FD14006236E9 /* DownloadsViewController.swift */,
 				20B151042811FD4C006236E9 /* NormalSearchViewController.swift */,
 				2049FDF32815E2BA004A8936 /* SearchViewController.swift */,
+				20E0AD60281DAF8D0036500D /* TitlePreviewViewController.swift */,
 			);
 			path = core;
 			sourceTree = "<group>";
@@ -135,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				2049FDEF2815E130004A8936 /* SearchResultsViewController.swift */,
+				20E0AD64281DC90C0036500D /* PrimaryUIButton.swift */,
 			);
 			path = general;
 			sourceTree = "<group>";
@@ -262,8 +271,10 @@
 			files = (
 				2049FDE82814DD24004A8936 /* TitleTableViewCell.swift in Sources */,
 				20B150EE2811F4F3006236E9 /* MainTabBarViewController.swift in Sources */,
+				20E0AD61281DAF8D0036500D /* TitlePreviewViewController.swift in Sources */,
 				2049FDDF2814A042004A8936 /* ThumbnailCollectionViewCell.swift in Sources */,
 				20B151052811FD4C006236E9 /* NormalSearchViewController.swift in Sources */,
+				20E0AD63281DBF0E0036500D /* TtitlePreviewViewModel.swift in Sources */,
 				2049FDF42815E2BA004A8936 /* SearchViewController.swift in Sources */,
 				20B150EA2811F4F3006236E9 /* AppDelegate.swift in Sources */,
 				2049FDD5281352EA004A8936 /* HeroHeaderUIView.swift in Sources */,
@@ -280,6 +291,7 @@
 				2049FDD3281349A3004A8936 /* CollectionTableViewCell.swift in Sources */,
 				2049FDD728145884004A8936 /* ApiCaller.swift in Sources */,
 				2049FDEA2814DFFB004A8936 /* TitleViewModel.swift in Sources */,
+				20E0AD65281DC90C0036500D /* PrimaryUIButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
