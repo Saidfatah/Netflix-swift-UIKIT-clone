@@ -8,7 +8,6 @@
 import UIKit
 
 class SearchViewController: UIViewController {
-
     var titlesSearchResults:[Title] = [Title]()
  
 //    private let discoverTableView :UITableView = {
@@ -60,7 +59,7 @@ extension SearchViewController : UISearchResultsUpdating {
         else { return}
         
         guard let resultsControler = searchController.searchResultsController as? SearchResultsViewController else {return}
-        
+        resultsControler.delegate = self
         ApiCaller.shared.getSearchedMovies(searchFor: query) { reults in
             DispatchQueue.main.async {
                 switch reults {
@@ -78,6 +77,15 @@ extension SearchViewController : UISearchResultsUpdating {
     }
 }
 
+extension SearchViewController : SearchResultsViewControllerDelegate {
+    func SearchResultsViewControllerDidtapItem(_ viewModel: TitlePreviewViewModel) {
+        let vc = TitlePreviewViewController()
+        vc.configure(with: viewModel)
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
+}
 //extension SearchViewController:UITableViewDelegate,UITableViewDataSource{
 //    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 //        return titlesSearchResults.count
