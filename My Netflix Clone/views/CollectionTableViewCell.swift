@@ -67,7 +67,7 @@ extension CollectionTableViewCell : UICollectionViewDelegate,UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         guard let title_name =  titles[indexPath.row].title ??  titles[indexPath.row].original_name  else {return  }
-        
+        print("click didSelectItemAt")
         ApiCaller.shared.getYoutubeTrailer(searchFor: title_name + "trailer") {[weak self] results in
             DispatchQueue.main.async {
                 switch results {

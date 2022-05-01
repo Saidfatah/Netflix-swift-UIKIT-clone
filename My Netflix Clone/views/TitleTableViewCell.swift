@@ -15,6 +15,7 @@ class TitleTableViewCell: UITableViewCell {
         imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.clipsToBounds = true
+        imageView.isUserInteractionEnabled = false
         return imageView
     }()
     
@@ -24,6 +25,7 @@ class TitleTableViewCell: UITableViewCell {
         button.setImage(UIImage(systemName: "play.circle", withConfiguration: UIImage.SymbolConfiguration(pointSize: 30)), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.tintColor = .red
+        button.isUserInteractionEnabled = false
         
         return button
     }()
@@ -33,7 +35,7 @@ class TitleTableViewCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
-        
+        label.isUserInteractionEnabled = false
         return label
     }()
     
@@ -43,6 +45,7 @@ class TitleTableViewCell: UITableViewCell {
         contentView.addSubview(titlePosterUIImageView)
         contentView.addSubview(titleLabel)
         contentView.addSubview(playButton)
+        
         setUpConstraints()
     }
     

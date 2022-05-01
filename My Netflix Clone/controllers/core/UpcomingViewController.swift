@@ -10,8 +10,7 @@ import UIKit
 class UpcomingViewController: UIViewController {
     private var titles:[Title] = [Title]()
     var upcomingFeedTableView :UITableView = {
-        var _tableView = UITableView(frame: .zero, style: .grouped)
-        _tableView.backgroundColor = .systemBackground
+        var _tableView = UITableView()
         _tableView.register(TitleTableViewCell.self, forCellReuseIdentifier: TitleTableViewCell.identifier)
 
         return _tableView
@@ -73,6 +72,28 @@ extension UpcomingViewController:UITableViewDelegate,UITableViewDataSource{
         100
     }
 
-    
-
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("selcted")
+        tableView.deselectRow(at: indexPath, animated: true)
+        guard let title_name =  titles[indexPath.row].title ??  titles[indexPath.row].original_name  else {return  }
+        ApiCaller.shared.getYoutubeTrailer(searchFor: title_name + "trailer") {[weak self] results in
+            DispatchQueue.main.async {
+                switch results {
+                case .success(let youtubeVideo):
+                    let title = self?.titles[indexPath.row]
+                    guard let strongSelf = self  else {return}
+                    let viewModel = TitlePreviewViewModel(title: title_name, youtubeVideo: youtubeVideo , overview: title?.overview ?? "overview ")
+                    DispatchQueue.main.async { [weak self] in
+                        let vc = TitlePreviewViewController()
+                        vc.configure(with: viewModel)
+                        self?.navigationController?.pushViewController(vc, animated: true)
+                    }
+                case .failure(let err):
+                    print(err.localizedDescription)
+                }
+            }
+        }
+    }
 }
+
+ 
