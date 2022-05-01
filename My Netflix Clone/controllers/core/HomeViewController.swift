@@ -16,7 +16,10 @@ enum sections:Int {
 }
 
 class HomeViewController: UIViewController {
+    private var heroTrendingMovie:Title?
+    var headerView:HeroHeaderUIView?
     let sectionTitles:[String] = ["Trending Movies","Popular","Trending Tv","Upcoming movies","Top rated "]
+    
     var homeFeedTableView :UITableView = {
         var _tableView = UITableView(frame: .zero, style: .grouped)
         _tableView.backgroundColor = .systemBackground
@@ -35,8 +38,10 @@ class HomeViewController: UIViewController {
         
         configureNvbar()
         
-        let headerView = HeroHeaderUIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 400))
+        headerView = HeroHeaderUIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 400))
         homeFeedTableView.tableHeaderView = headerView
+        
+        configureHeroHeaderView()
     }
     
     private func configureNvbar(){
@@ -64,7 +69,20 @@ class HomeViewController: UIViewController {
         super.viewDidLayoutSubviews()
         homeFeedTableView.frame = view.bounds
     }
+    private func configureHeroHeaderView(){
+        ApiCaller.shared.getTrendingTv {[weak self] results in
+            switch results{
+            case .success(let trendingTvShows):
+                let randomSelected = trendingTvShows.randomElement()
+                self?.heroTrendingMovie = randomSelected
+                let titleModel = TitleViewModel(titleName: (randomSelected?.title ?? randomSelected?.original_name) ?? "defualt" , posterUrl: randomSelected?.poster_path ?? "defualt")
+                self?.headerView?.configure(with: titleModel)
+            case .failure(let error):
+                print(error )
 
+            }
+        }
+    }
   
 }
 
